@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Shopee — Do zero à sua primeira venda</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#0a0a0a; color:#fff; }
+  .topbar { background:#EE4D2D; text-align:center; padding:10px; font-size:13px; font-weight:600; letter-spacing:0.5px; }
+  .hero { background:linear-gradient(135deg,#0a0a0a 0%,#1a0800 50%,#0a0a0a 100%); padding:60px 20px 50px; text-align:center; border-bottom:2px solid #EE4D2D22; }
+  .badge-top { display:inline-block; background:#EE4D2D; color:#fff; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 16px; border-radius:20px; margin-bottom:20px; }
+  .hero h1 { font-family:'Montserrat',sans-serif; font-size:clamp(26px,5vw,48px); font-weight:900; line-height:1.15; max-width:800px; margin:0 auto 16px; }
+  .hero h1 .hl { color:#EE4D2D; }
+  .hero .sub { font-size:clamp(15px,2.5vw,18px); color:#ccc; max-width:620px; margin:0 auto 32px; line-height:1.6; }
+
+  /* ===== VSL VTURB ===== */
+  .vsl-wrap {
+    max-width:720px;
+    margin:0 auto 32px;
+    border-radius:12px;
+    overflow:hidden;
+    border:2px solid #EE4D2D44;
+    box-shadow:0 0 40px #EE4D2D22;
+    background:#000;
+  }
+  .vsl-wrap vturb-smartplayer {
+    display:block;
+    width:100%;
+  }
+
+  .cta-block { text-align:center; padding:8px 20px 50px; }
+  .price-por { font-size:13px; color:#aaa; }
+  .price-main { font-family:'Montserrat',sans-serif; font-size:52px; font-weight:900; color:#fff; line-height:1; margin:6px 0 4px; }
+  .price-main sup { font-size:24px; vertical-align:top; margin-top:10px; display:inline-block; }
+  .price-main .cents { font-size:28px; }
+  .price-parcel { font-size:13px; color:#888; margin-bottom:22px; }
+  .cta-btn { display:inline-block; background:#EE4D2D; color:#fff; font-family:'Montserrat',sans-serif; font-size:18px; font-weight:800; text-transform:uppercase; letter-spacing:1px; padding:20px 44px; border-radius:8px; text-decoration:none; cursor:pointer; animation:pulse 2s infinite; box-shadow:0 6px 30px #EE4D2D66; }
+  @keyframes pulse { 0%,100%{transform:scale(1);box-shadow:0 6px 30px #EE4D2D66} 50%{transform:scale(1.03);box-shadow:0 8px 40px #EE4D2DAA} }
+  .cta-sub { margin-top:12px; font-size:12px; color:#888; }
+  .cta-sub span { color:#4CAF50; margin-right:6px; }
+
+  .authority { background:#111; padding:60px 20px; }
+  .section-title { text-align:center; font-family:'Montserrat',sans-serif; font-size:clamp(20px,3.5vw,30px); font-weight:800; margin-bottom:8px; }
+  .section-sub { text-align:center; color:#aaa; font-size:15px; margin-bottom:40px; }
+  .authority-inner { max-width:860px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:32px; align-items:center; }
+  .authority-photo { border-radius:12px; overflow:hidden; border:2px solid #EE4D2D33; aspect-ratio:3/4; background:#1a1a1a; position:relative; }
+  .authority-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .authority-text h3 { font-family:'Montserrat',sans-serif; font-size:23px; font-weight:800; margin-bottom:18px; }
+  .authority-text h3 span { color:#EE4D2D; }
+  .stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+  .stat-item { background:#1a1a1a; border:1px solid #EE4D2D22; border-radius:8px; padding:16px 12px; text-align:center; }
+  .stat-num { font-family:'Montserrat',sans-serif; font-size:25px; font-weight:900; color:#EE4D2D; line-height:1.1; }
+  .stat-lbl { font-size:11px; color:#888; margin-top:4px; line-height:1.3; }
+  .authority-text p { color:#ccc; font-size:14px; line-height:1.75; margin-bottom:10px; }
+  .authority-text p strong { color:#fff; }
+
+  .modules { background:#0a0a0a; padding:70px 20px; }
+  .modules-wrap { max-width:860px; margin:0 auto; }
+  .module-card { background:#111; border:1px solid #EE4D2D22; border-radius:14px; overflow:hidden; margin-bottom:16px; }
+  .module-header { display:flex; align-items:center; gap:16px; padding:20px 24px; cursor:pointer; user-select:none; }
+  .module-num { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:800; letter-spacing:2px; color:#EE4D2D; background:#EE4D2D18; border:1px solid #EE4D2D44; border-radius:20px; padding:4px 12px; white-space:nowrap; }
+  .module-icon { font-size:24px; min-width:32px; text-align:center; }
+  .module-title { flex:1; }
+  .module-title h4 { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:800; margin-bottom:2px; }
+  .module-title p { font-size:12px; color:#888; }
+  .module-arrow { font-size:14px; color:#EE4D2D; transition:transform .3s; }
+  .module-arrow.open { transform:rotate(180deg); }
+  .module-body { display:none; padding:0 24px 20px; border-top:1px solid #EE4D2D18; }
+  .module-body.open { display:block; }
+  .topic-list { list-style:none; margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
+  .topic-list li { background:#1a1a1a; border:1px solid #EE4D2D22; border-radius:20px; padding:5px 14px; font-size:12px; color:#ccc; display:flex; align-items:center; gap:6px; }
+  .topic-list li::before { content:''; width:5px; height:5px; border-radius:50%; background:#EE4D2D; min-width:5px; }
+  .module-highlight { background:#EE4D2D10; border:1px solid #EE4D2D33; border-radius:8px; padding:12px 16px; margin-top:14px; font-size:13px; color:#EE4D2D; font-style:italic; }
+
+  .bonus { background:#0d0800; border-top:1px solid #EE4D2D33; border-bottom:1px solid #EE4D2D33; padding:60px 20px; }
+  .bonus-card { max-width:640px; margin:0 auto; background:linear-gradient(135deg,#1a0e00,#150800); border:2px solid #EE4D2D55; border-radius:16px; padding:32px; text-align:center; }
+  .bonus-badge { display:inline-block; background:#FF9800; color:#000; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:16px; }
+  .bonus-card h3 { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; margin-bottom:10px; }
+  .bonus-card p { color:#ccc; font-size:14px; line-height:1.7; }
+  .bonus-items { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:20px; }
+  .bonus-tag { background:#EE4D2D18; border:1px solid #EE4D2D44; border-radius:20px; padding:6px 14px; font-size:12px; color:#EE4D2D; }
+
+  .foritems { background:#111; padding:60px 20px; }
+  .for-grid { max-width:840px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .for-col { background:#0a0a0a; border-radius:12px; padding:26px; }
+  .for-col.yes { border:1px solid #4CAF5033; }
+  .for-col.no { border:1px solid #66666633; }
+  .for-col h4 { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:800; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .for-col.yes h4 { color:#4CAF50; }
+  .for-col.no h4 { color:#888; }
+  .for-col ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .for-col li { font-size:13px; color:#ccc; line-height:1.55; display:flex; gap:9px; align-items:flex-start; }
+  .for-col.yes li::before { content:'✓'; color:#4CAF50; font-weight:700; min-width:14px; }
+  .for-col.no li::before { content:'✕'; color:#666; font-weight:700; min-width:14px; }
+  .for-col.no li { color:#888; }
+
+  .faq { background:#0a0a0a; padding:60px 20px; }
+  .faq-wrap { max-width:700px; margin:0 auto; }
+  .faq-item { border-bottom:1px solid #1e1e1e; }
+  .faq-q { padding:20px 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:15px; font-weight:600; user-select:none; }
+  .faq-q .fq-arrow { color:#EE4D2D; font-size:20px; transition:transform .25s; min-width:16px; }
+  .faq-q .fq-arrow.open { transform:rotate(45deg); }
+  .faq-a { display:none; padding:0 0 20px; font-size:14px; color:#aaa; line-height:1.75; }
+  .faq-a.open { display:block; }
+
+  .guarantee { background:#111; padding:50px 20px; text-align:center; }
+  .guarantee-inner { max-width:560px; margin:0 auto; border:2px dashed #4CAF5044; border-radius:16px; padding:36px; }
+  .guarantee-icon { font-size:52px; margin-bottom:16px; }
+  .guarantee h3 { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; color:#4CAF50; margin-bottom:12px; }
+  .guarantee p { color:#ccc; font-size:14px; line-height:1.7; }
+
+  .cta-final { background:linear-gradient(135deg,#EE4D2D11,#0a0a0a,#EE4D2D11); padding:70px 20px; text-align:center; }
+  .cta-final h2 { font-family:'Montserrat',sans-serif; font-size:clamp(22px,4vw,36px); font-weight:900; margin-bottom:16px; }
+  .cta-final > p { color:#aaa; font-size:15px; margin-bottom:30px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.6; }
+
+  .footer { background:#050505; border-top:1px solid #1a1a1a; padding:24px 20px; text-align:center; }
+  .footer p { font-size:11px; color:#555; line-height:1.7; }
+  .footer a { color:#555; }
+
+  @media (max-width:600px) {
+    .authority-inner, .for-grid { grid-template-columns:1fr; }
+    .authority-photo { max-width:320px; margin:0 auto; }
+    .module-header { padding:18px 16px; gap:10px; }
+    .module-num { font-size:9px; padding:4px 9px; }
+    .module-title h4 { font-size:14px; }
+    .module-title p { font-size:11px; }
+    .cta-btn { padding:18px 24px; font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🔥 Turma de lançamento — condição especial de primeira turma
+</div>
+
+<section class="hero">
+  <div class="badge-top">Método completo · 5 módulos</div>
+  <h1>O passo a passo que me levou a faturar <span class="hl">mais de R$ 50 mil em um mês</span> vendendo na Shopee</h1>
+  <p class="sub">Do zero à sua primeira venda: como escolher produtos, montar uma loja profissional e aparecer na frente dos concorrentes no maior marketplace do Brasil.</p>
+
+  <div class="vsl-wrap">
+    <vturb-smartplayer
+      id="vid-6aadfedfad4c112b70156def"
+      style="display:block; margin:0 auto; width:100%;">
+      <div
+        class="vturb-player-placeholder"
+        style="position:relative; width:100%; padding:56.25% 0 0; z-index:0; background-color:black;">
+      </div>
+    </vturb-smartplayer>
+  </div>
+
+  <div class="cta-block">
+    <div class="price-por">Acesso completo por:</div>
+    <div class="price-main"><sup>R$</sup>247<span class="cents">,00</span></div>
+    <div class="price-parcel">ou 12x de R$ 24,80</div>
+    <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="cta-btn">🛒 Quero começar agora</a>
+    <div class="cta-sub"><span>🔒</span> Compra 100% segura · Acesso imediato</div>
+  </div>
+</section>
+
+<section class="authority">
+  <div class="section-title">Quem vai te ensinar?</div>
+  <div class="section-sub">Conheça sua instrutora</div>
+  <div class="authority-inner">
+    <div class="authority-photo">
+      <img src="tainarodrigues.jpg" alt="Tainá Rodrigues">
+    </div>
+    <div class="authority-text">
+      <h3>Oi, eu sou a <span>Tainá Rodrigues</span></h3>
+      <div class="stat-grid">
+        <div class="stat-item"><div class="stat-num">+R$50 mil</div><div class="stat-lbl">Faturados em um único mês</div></div>
+        <div class="stat-item"><div class="stat-num">3 mil</div><div class="stat-lbl">Pessoas acompanhando</div></div>
+        <div class="stat-item"><div class="stat-num">5</div><div class="stat-lbl">Módulos do zero ao avançado</div></div>
+        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">Prático e direto ao ponto</div></div>
+      </div>
+      <p>Comecei vendendo do celular, em casa, sem dinheiro para investir em estoque. Fui aprendendo na prática — errando, testando e ajustando — até chegar a <strong>mais de R$ 50 mil faturados em um único mês na Shopee</strong>.</p>
+      <p>Agora coloquei tudo o que funcionou dentro de um método organizado, para você não precisar levar anos descobrindo sozinha o que eu já descobri.</p>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="modules-wrap">
+    <div class="section-title">O que você vai aprender</div>
+    <div class="section-sub">5 módulos práticos do zero ao avançado</div>
+
+    <div class="module-card">
+      <div class="module-header" onclick="toggle(this)">
+        <span class="module-num">MÓDULO 1</span><span class="module-icon">🧠</span>
+        <div class="module-title"><h4>Mentalidade + Minha História</h4><p>A base que separa quem desiste de quem fatura</p></div>
+        <span class="module-arrow">▼</span>
+      </div>
+      <div class="module-body">
+        <ul class="topic-list"><li>O que me fez chegar até aqui</li><li>Mentalidade de vendedora</li><li>Como vencer o medo de começar</li><li>Erros que cometi e como você evita</li></ul>
+        <div class="module-highlight">"Antes de aprender a vender, você precisa aprender a pensar como vendedora."</div>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-header" onclick="toggle(this)">
+        <span class="module-num">MÓDULO 2</span><span class="module-icon">🔍</span>
+        <div class="module-title"><h4>Encontrando Produtos Vencedores</h4><p>Escolha produtos que já têm demanda — sem achismo</p></div>
+        <span class="module-arrow">▼</span>
+      </div>
+      <div class="module-body">
+        <ul class="topic-list"><li>Como escolher seu nicho</li><li>Como validar demanda real</li><li>Como evitar produtos ruins</li></ul>
+        <div class="module-highlight">"O produto certo é metade da venda. Eu te mostro como encontrá-lo antes dos concorrentes."</div>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-header" onclick="toggle(this)">
+        <span class="module-num">MÓDULO 3</span><span class="module-icon">🏪</span>
+        <div class="module-title"><h4>Criando uma Loja Profissional</h4><p>Sua loja precisa transmitir confiança antes da primeira venda</p></div>
+        <span class="module-arrow">▼</span>
+      </div>
+      <div class="module-body">
+        <ul class="topic-list"><li>Marca</li><li>Logo</li><li>Layout</li><li>Configurações</li><li>Reputação</li></ul>
+        <div class="module-highlight">"Uma loja profissional vende mais desde o primeiro dia — mesmo sem nenhuma avaliação ainda."</div>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-header" onclick="toggle(this)">
+        <span class="module-num">MÓDULO 4</span><span class="module-icon">📈</span>
+        <div class="module-title"><h4>Anúncios que Aparecem Primeiro</h4><p>SEO interno da Shopee para dominar os resultados de busca</p></div>
+        <span class="module-arrow">▼</span>
+      </div>
+      <div class="module-body">
+        <ul class="topic-list"><li>SEO dentro da Shopee</li><li>Título</li><li>Palavras-chave</li><li>Fotos</li><li>Vídeos</li><li>Descrição</li><li>Preço</li><li>Cupons</li><li>Avaliações</li></ul>
+        <div class="module-highlight">"O algoritmo da Shopee favorece quem sabe exatamente o que estou prestes a te ensinar."</div>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <div class="module-header" onclick="toggle(this)">
+        <span class="module-num">MÓDULO 5</span><span class="module-icon">🚀</span>
+        <div class="module-title"><h4>Shopee Ads</h4><p>Escale suas vendas com anúncios dentro da própria plataforma</p></div>
+        <span class="module-arrow">▼</span>
+      </div>
+      <div class="module-body">
+        <ul class="topic-list"><li>Campanhas</li><li>Escala</li><li>Otimização</li></ul>
+        <div class="module-highlight">"Tráfego pago bem feito acelera o que você já construiu nos módulos anteriores."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bonus">
+  <div class="section-title">+ Bônus incluído</div>
+  <div class="bonus-card">
+    <div class="bonus-badge">🎁 Bônus</div>
+    <h3>Grupo de Networking VIP</h3>
+    <p>Acesso ao grupo exclusivo de alunas para trocar experiências, tirar dúvidas e se conectar com outras pessoas trilhando o mesmo caminho que você.</p>
+    <div class="bonus-items">
+      <span class="bonus-tag">💬 Troca entre alunas</span><span class="bonus-tag">📊 Dicas e atualizações</span>
+      <span class="bonus-tag">👥 Conexões reais</span><span class="bonus-tag">❓ Espaço para dúvidas</span>
+    </div>
+  </div>
+</section>
+
+<section class="foritems">
+  <div class="section-title">Este curso é para você?</div>
+  <div class="section-sub">Seja honesta consigo mesma antes de entrar</div>
+  <div class="for-grid">
+    <div class="for-col yes">
+      <h4>✓ É para você se…</h4>
+      <ul>
+        <li>Quer começar a vender na Shopee mas não sabe por onde iniciar</li>
+        <li>Já tem uma loja aberta mas não está vendendo</li>
+        <li>Quer entender o algoritmo da Shopee para aparecer nas buscas</li>
+        <li>Está disposta a aplicar o que aprender, não só assistir</li>
+        <li>Quer construir uma renda real, com consistência</li>
+      </ul>
+    </div>
+    <div class="for-col no">
+      <h4>✕ Não é para você se…</h4>
+      <ul>
+        <li>Procura enriquecer rápido, sem trabalho</li>
+        <li>Não pretende aplicar nada do que for ensinado</li>
+        <li>Espera resultado garantido sem nenhum esforço</li>
+        <li>Não tem paciência para construir algo ao longo dos meses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="section-title">Perguntas frequentes</div>
+  <div class="section-sub">Tire suas dúvidas antes de entrar</div>
+  <div class="faq-wrap">
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">Preciso ter dinheiro para investir em estoque? <span class="fq-arrow">+</span></div><div class="faq-a">Não. Eu mostro como começar sem estoque próprio, trabalhando com fornecedores que enviam direto para o cliente. Você pode iniciar com investimento baixo.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">Nunca vendi nada online. Consigo acompanhar? <span class="fq-arrow">+</span></div><div class="faq-a">Sim. O curso começa do absoluto zero — desde configurar sua loja até publicar o primeiro anúncio. Cada módulo é feito em sequência, sem pressupor conhecimento anterior.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">Em quanto tempo vou ver resultado? <span class="fq-arrow">+</span></div><div class="faq-a">Não existe garantia de resultado — isso depende da sua dedicação, do nicho escolhido e da consistência na aplicação. O que eu entrego é o método que funcionou comigo, organizado para você aplicar.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">Por quanto tempo tenho acesso? <span class="fq-arrow">+</span></div><div class="faq-a">O acesso é vitalício. Você assiste no seu ritmo, quantas vezes quiser, pelo celular ou computador.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">Como recebo o acesso após a compra? <span class="fq-arrow">+</span></div><div class="faq-a">Logo após a confirmação do pagamento você recebe um e-mail com o link da área de membros e o convite para o grupo de networking.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="fq(this)">E se eu não gostar do conteúdo? <span class="fq-arrow">+</span></div><div class="faq-a">Você tem 7 dias de garantia. Se não fizer sentido para você, é só pedir o reembolso dentro desse prazo e devolvemos 100% do valor.</div></div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="guarantee-icon">🛡️</div><h3>Garantia de 7 dias</h3>
+    <p>Entre, assista, avalie. Se em 7 dias você achar que o conteúdo não é para você, basta pedir o reembolso e devolvemos 100% do valor. Sem perguntas, sem burocracia.</p>
+  </div>
+</section>
+
+<section class="cta-final">
+  <h2>Pronta para começar a vender na Shopee?</h2>
+  <p>Acesso imediato aos 5 módulos, ao grupo de networking e a todas as atualizações futuras.</p>
+  <div class="price-por">Acesso completo por:</div>
+  <div class="price-main"><sup>R$</sup>247<span class="cents">,00</span></div>
+  <div class="price-parcel">ou 12x de R$ 24,80</div>
+  <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="cta-btn">🛒 Quero o acesso agora</a>
+  <div class="cta-sub" style="margin-top:14px"><span>🔒</span> Pagamento seguro · Acesso imediato · Garantia de 7 dias</div>
+</section>
+
+<div class="footer">
+  <p>© 2025 Taina Rodrigues · Todos os direitos reservados<br>
+  Os resultados apresentados são individuais e não representam garantia de ganhos. Seu resultado depende da sua dedicação e aplicação.<br>
+  <a href="#">Política de privacidade</a> · <a href="#">Termos de uso</a></p>
+</div>
+
+<script>
+  function toggle(header) {
+    const arrow = header.querySelector('.module-arrow');
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.module-body.open').forEach(b=>b.classList.remove('open'));
+    document.querySelectorAll('.module-arrow.open').forEach(a=>a.classList.remove('open'));
+    if(!isOpen){ body.classList.add('open'); arrow.classList.add('open'); }
+  }
+  function fq(q) {
+    q.nextElementSibling.classList.toggle('open');
+    q.querySelector('.fq-arrow').classList.toggle('open');
+  }
+  toggle(document.querySelector('.module-header'));
+</script>
+
+<!-- VTURB -->
+<script type="text/javascript">
+  var s = document.createElement("script");
+  s.src = "https://scripts.converteai.net/55072b54-36ad-46f9-9318-ab520be1dd2c/players/6aadfedfad4c112b70156def/v4/player.js";
+  s.async = true;
+  document.head.appendChild(s);
+</script>
+
+</body>
+</html>
